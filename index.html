@@ -36,7 +36,7 @@
 </main>
 <script>
 const iniciais=[['CFI2B71','CORSA'],['EQJ5241','UNO'],['FBL5951','PALIO'],['DLU8J74','CELTA'],['ETW0J23','SANDERO (PRATA)'],['FNO8H33','PRISMA'],['FPX5G04','EXPERT'],['EPP2845','HR'],['EQT3D56','SANDERO (VERDE)'],['EFT8H38','PALIO'],['EUY6558','FIORINO'],['GDS2013','UTILITARIO'],['GDS0105','CAMINHÃO'],['CUT3G00','UTILITARIO'],['COT3D61','UTILITARIO']];
-const API_URL='https://script.google.com/macros/s/AKfycbwTPQy1BLWzsMkB6dp2tM6t4dQxh-z7BmvYYLrUyUt-_iHCXNMHkoGgDvkZ4nV0e_Hoog/exec';
+const API_URL='https://script.google.com/macros/s/AKfycbwTPQy1BLWzsMkB6dp2tM6t4dQxh-z7BmvYYLrUyUt-_iHCXNMHkoGgDvkZ4nV0e_Hoog/exec?acao=km&responsavel=Teste&placa=CFI2B71&modelo=CORSA&km=100';
 const chave='gds_controle_oleo_v1';let dados=JSON.parse(localStorage.getItem(chave)||'null')||{veiculos:iniciais.map(([placa,modelo])=>({placa,modelo,ativo:true,km:0})),trocas:[],leituras:[]};
 const save=()=>localStorage.setItem(chave,JSON.stringify(dados)); const fmt=n=>Number(n||0).toLocaleString('pt-BR');
 function servidor(payload){if(API_URL.startsWith('COLE_'))return;const q=Object.entries(payload).map(([k,v])=>encodeURIComponent(k)+'='+encodeURIComponent(v===true?'1':v===false?'0':v)).join('&');const img=new Image();img.src=API_URL+'?'+q+'&x='+Date.now()}
